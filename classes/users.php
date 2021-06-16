@@ -28,6 +28,9 @@ class User
 
     public function setEmail($value)
     {
+        if (!strstr($value, "@")) {
+            throw new Exception("L'email inserita non è valida");
+        }
         $this->email = $value;
     }
 
@@ -38,7 +41,7 @@ class User
 
     public function setAge($value)
     {
-        if($value < 18){
+        if ($value < 18) {
             echo "età non valida";
         } else {
             $this->age = $value;
@@ -50,7 +53,8 @@ class User
         return $this->age;
     }
 
-    public function setPaymentMethod($value){
+    public function setPaymentMethod($value)
+    {
         $this->userPaymentMethod = $value;
     }
 
@@ -61,8 +65,8 @@ class User
 
     public function renderUser()
     {
-        $render = "<h1>" . $this->name . $this->email . "</h1>" ;
-        $render .= "<h2> l'eta dell'utente è:" . $this->age . "Ed il metodo di pagamento utilizzato " .$this->userPaymentMethod . "</h2>" ;
+        $render = "<h1>" . $this->name . $this->email . "</h1>";
+        $render .= "<h2> l'eta dell'utente è:" . $this->age . "Ed il metodo di pagamento utilizzato " . $this->userPaymentMethod . "</h2>";
         return $render;
     }
 }

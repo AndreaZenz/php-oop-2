@@ -17,8 +17,14 @@ require_once("./classes/users.php");
 require_once("./classes/usersPaymentClass.php");
 
 
-$user1 = new User("andrea", "soLillo@tiscali.it", "20", "creditCard");
-$paymentClass = new SubscriptedUser("andrea", "soLillo@tiscali.it", "20", "creditCard", "premium");
+try{
+    $user1 = new User("andrea", "soLillo@tiscali.it", "20", "creditCard");
+    $paymentClass = new SubscriptedUser("andrea", "soLillo@tiscali.it", "20", "creditCard", "premium");
+    echo $user1 -> renderUser();
+}catch(Exception $e){
+    echo "eccezzione " . $e->getMessage();
+}
 
-echo $user1 -> renderUser();
+
 // echo $paymentClass -> renderUser();
+
